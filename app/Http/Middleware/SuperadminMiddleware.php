@@ -18,15 +18,12 @@ class SuperadminMiddleware
     {
 
 
-        if(Auth::user()->role_as == 'superadmin')
-        {
-            if(Auth::check() && Auth::user()->status)
-            {
+        if (Auth::user()->role_as == 'superadmin') {
+            if (Auth::check() && Auth::user()->status) {
                 $deactive = Auth::user()->status == '1';
                 Auth::logout();
 
-                if($deactive == 1)
-                {
+                if ($deactive == 1) {
                     $msg = "Your Account is Deactive. Please Contact Super Administrator.";
                 }
                 return redirect()->route('login')
@@ -34,19 +31,8 @@ class SuperadminMiddleware
                     ->withErrors(['email' => 'Your Account is Deactive. Please Contact Super Administrator.']);
             }
             return $next($request);
+        } else {
+            return redirect('admin/dashboard');
         }
-        else
-        {
-            return redirect('admin/en')->with('error', 'You are not allow to access the Super Admin Dashboard.');
-        }
-
-        // if(Auth::user()->role_as == 'superadmin')
-        // {
-        //     return $next($request);
-        // }
-        // else
-        // {
-        //     return redirect('/admin/en')->with('status', 'You are not allow to access the Super Admin Dashboard.');
-        // }
     }
 }

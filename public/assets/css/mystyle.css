@@ -93,3 +93,16 @@ a {
     font-size: 13px;
     font-weight: 500;
 }
+
+.icheck-primary
+    > input:first-child:checked
+    + input[type="hidden"]
+    + label::before,
+.icheck-primary > input:first-child:checked + label::before {
+    background-color: #0088cc;
+    border-color: #0088cc;
+}
+
+.invalid-feedback {
+    font-size: 85%;
+}

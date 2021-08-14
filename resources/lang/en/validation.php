@@ -134,18 +134,44 @@ return [
         //     'rule-name' => 'custom-message',
         // ],
         'n_title' => [
-            'required' => "The news title field can't be blank.",
+            'required' => "The news title field can't be blank !!",
         ],
         'n_date' => [
-            'required' => "The date field is required.",
-            'date' => "The date is not a valid date.",
+            'required' => "The date field is required !!",
+            'date' => "The date is not a valid date !!",
         ],
         'n_disc' => [
-            'required' => "The news description field can't be blank.",
+            'required' => "The news description field can't be blank !!",
         ],
         'n_file' => [
-            'required' => "The image field is required.",
+            'required' => "The image field is required !!",
+            'image' => 'The image field must be an image !!',
+            'mimes' => 'Supported image types: :values.',
         ],
+        'name' => [
+            'required' => "The name field is required !!",
+        ],
+        'email' => [
+            'required' => "The email field is required !!",
+        ],
+        'roles' => [
+            'required' => "The roles field is required !!",
+        ],
+        'old_password' => [
+            'required' => "The old password field is required !!",
+        ],
+        'password' => [
+            'required' => "The password field is required !!",
+            'confirmed' => "The password confirmation does not match !!",
+        ],
+        'password_confirmation' => [
+            'required' => "The confirm password field is required !!",
+            'same' => 'The confirm password and password must match !!',
+        ],
+    ],
+
+    'min' => [
+        'string' => 'The password must be at least :min characters !!',
     ],
 
     /*

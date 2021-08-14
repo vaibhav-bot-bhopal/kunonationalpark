@@ -2,11 +2,10 @@
 
 @section('content')
 
-	<!-- CONTENT -->
-						<!-- Intro Section -->
-						<div class="page-header parallax">			
+<!-- Intro Section -->
+<div class="page-header parallax">
 
-@if( session('locale') == 'en' ) 
+@if( session('locale') == 'en' )
 <div class="container">
 	<h1 class="title text-center">CONTACT US</h1>
 </div>
@@ -19,13 +18,13 @@
 				</li>
 				<li class="breadcrumb-item active" aria-current="page">
 					Contact Us
-				</li>	
+				</li>
 			</ol>
 		</nav>
 	</div>
-</div>			
+</div>
 @endif
-@if( session('locale') == 'hi' ) 
+@if( session('locale') == 'hi' )
 <div class="container">
 	<h1 class="title text-center"> संपर्क करें </h1>
 </div>
@@ -38,33 +37,33 @@
 				</li>
 				<li class="breadcrumb-item active" aria-current="page">
 				संपर्क करें
-				</li>		
+				</li>
 			</ol>
 		</nav>
 	</div>
 </div>
-@endif	
+@endif
 
 </div>
 <!-- End Intro Section -->
-			
+
 			<!-- Contact Section -->
 				<section class="padding ptb-xs-60">
 				<div class="container">
 					<div class="row text-center">
 						<div class="col-md-8 offset-md-2 text-center">
 							<div class="heading-box pb-30">
-							@if( session('locale') == 'en' ) 
+							@if( session('locale') == 'en' )
 							<h2 class="text-center"><span>Kuno</span> National Park</h2>
 								<span class="b-line"></span>
 							@endif
-							@if( session('locale') == 'hi' ) 
+							@if( session('locale') == 'hi' )
 							<h2 class="text-center"><span>कूनो </span> नेशनल पार्क</h2>
 								<span class="b-line"></span>
 							@endif
 							</div>
 							<p class="lead">
-								
+
 							</p>
 						</div>
 					</div>
@@ -77,9 +76,9 @@
 								<div class="col-sm-4 pb-xs-30">
 									<i class="ion-ios-location icon-circle pos-s"></i>
 									<p  class="mt-15">
-									Office of DFO Kuno Wildlife Division 
-										<br />
-										Sheopur MP - 476337
+									Office of DFO Kuno Wildlife Division
+                                    <br />
+                                    Sheopur MP - 476337
 									</p>
 								</div>
 								<div class="col-sm-4 pb-xs-30">
@@ -97,23 +96,23 @@
 						</div>
 					</div>
 				</div>
-				<!-- Map Section -->				
+				<!-- Map Section -->
 			</section>
-			<div class="container">				
+			<div class="container">
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="headeing pb-20 text-center">
-							@if( session('locale') == 'en' ) 
+							@if( session('locale') == 'en' )
 								<h2>Contact Us</h2>
 								<span class="b-line"></span>
 							@endif
-							@if( session('locale') == 'hi' ) 
+							@if( session('locale') == 'hi' )
 								<h2>संपर्क करें</h2>
 								<span class="b-line"></span>
-							@endif								
+							@endif
 							</div>
 							<p class="text-center">
-								
+
 							</p>
 							<!-- Contact FORM -->
 							<form class="contact-form mt-45" id="contact">
@@ -143,13 +142,13 @@
 									</div>
 									<div class="col-sm-12 mt-30 text-center">
 										<button class="btn-text" type="button" id="submit" name="button">
-										@if( session('locale') == 'en' ) 	
+										@if( session('locale') == 'en' )
 											Send Message
 										@endif
-										@if( session('locale') == 'hi' ) 											
+										@if( session('locale') == 'hi' )
 											संदेश भेजें
 										@endif
-										</button>							
+										</button>
 
 									</div>
 								</div>
@@ -157,9 +156,7 @@
 							<!-- END Contact FORM -->
 						</div>
 					</div>
-				
+
 			</div>
 			<!-- Contact Section -->
-
-
 @endsection

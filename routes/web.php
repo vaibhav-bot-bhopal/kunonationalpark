@@ -15,11 +15,6 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes();
 
 
@@ -37,8 +32,16 @@ Route::get('/gallery/3', 'GalleryController@page3')->middleware('language');
 Route::get('/contact', 'ContactusController@index')->middleware('language');
 
 Route::group(['prefix' => 'superadmin', 'middleware' => ['auth', 'isSuperadmin', 'prevent-back-history']], function () {
+    // Account Settings
+    Route::get('profile', 'SettingsController@index')->name('suadmin.profile');
+    Route::put('profile-update', 'SettingsController@updateProfile')->name('suadmin.profile.update');
+    Route::get('changePassword', 'SettingsController@changePassword')->name('suadmin.changePassword');
+    Route::put('updatePassword', 'SettingsController@updatePassword')->name('suadmin.updatePassword');
+    Route::get('adminChangePassword/{id}', 'SettingsController@adminChangePassword')->name('suadmin.changeadminpassword');
+    Route::put('adminUpdatePassword/{id}', 'SettingsController@adminUpdatePassword')->name('suadmin.updateadminpassword');
+
     // For Super Admin Dashboard
-    Route::get('/dashboard', 'SuperAdminController@index')->name('dashboard');
+    Route::get('/dashboard', 'SuperAdminController@index')->name('superadmin.dashboard');
     Route::get('/role-edit/{id}', 'SuperAdminController@editUserRole')->name('editUserRole');
     Route::put('/role-update/{id}', 'SuperAdminController@updateUserRole')->name('updateUserRole');
     Route::delete('/role-delete/{id}', 'SuperAdminController@deleteUserRole')->name('deleteUserRole');
@@ -46,19 +49,19 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['auth', 'isSuperadmin',
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'prevent-back-history']], function () {
-    // For English Language Dashboard
-    Route::get('/en', 'HomeController@english')->name('admin-en');
-    Route::post('/eng_news_create', 'HomeController@eng_news_create')->name('eng_news_create');
-    Route::get('/eng_news_edit/{id}', 'HomeController@eng_news_edit')->name('eng_news_edit');
-    Route::post('/eng_news_update/{id}', 'HomeController@eng_news_update')->name('eng_news_update');
-    Route::delete('/eng_news_del/{id}', 'HomeController@eng_news_del')->name('eng_news_del');
+    // For Dashboard
+    Route::get('/dashboard', 'DashboardController@index')->name('knp.dashboard')->middleware('language');
+    Route::get('/newsShow', 'HomeController@newsShow')->name('knp.newsshow')->middleware('language');
+    Route::post('/newsAdd', 'HomeController@newsAdd')->name('knp.newsadd')->middleware('language');
+    Route::get('/newsEdit/{id}', 'HomeController@newsEdit')->name('knp.newsedit')->middleware('language');
+    Route::post('/newsUpdate/{id}', 'HomeController@newsUpdate')->name('knp.newsupdate')->middleware('language');
+    Route::delete('/newsDelete/{id}', 'HomeController@newsDelete')->name('knp.newsdelete')->middleware('language');
 
-    // For Hindi Language Dashboard
-    Route::get('/hi', 'HomeController@hindi')->name('admin-hi');
-    Route::post('/hin_news_create', 'HomeController@hin_news_create')->name('hin_news_create');
-    Route::get('/hin_news_edit/{id}', 'HomeController@hin_news_edit')->name('hin_news_edit');
-    Route::post('/hin_news_update/{id}', 'HomeController@hin_news_update')->name('hin_news_update');
-    Route::delete('/hin_news_del/{id}', 'HomeController@hin_news_del')->name('hin_news_del');
+    // Account Settings
+    Route::get('profile', 'SettingsController@index')->name('knp.admin.profile')->middleware('language');
+    Route::put('profile-update', 'SettingsController@updateProfile')->name('knp.admin.profile.update')->middleware('language');
+    Route::get('changePassword', 'SettingsController@changePassword')->name('knp.admin.changePassword')->middleware('language');
+    Route::put('updatePassword', 'SettingsController@updatePassword')->name('knp.admin.updatePassword')->middleware('language');
 });
 
 Route::prefix('about')->group(function () {

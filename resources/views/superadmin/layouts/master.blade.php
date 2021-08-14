@@ -86,7 +86,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{url('superadmin/dashboard')}}" class="brand-link">
-            <img src="{{ asset('public/assets/images/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="{{ asset('public/assets/images/kuno_logo_panel.png') }}" alt="Kuno-Logo" class="brand-image">
             <span class="brand-text font-weight-light">Kuno National Park</span>
         </a>
 
@@ -96,28 +96,51 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                    <li class="nav-header">ADMIN'S LIST</li>
                     <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="{{ url('superadmin/dashboard') }}" class="nav-link {{ 'superadmin/dashboard' == request()->path() ? 'active' : '' }}">
+                                <i class="fas fa-user-cog nav-icon"></i>
+                                <p>Admin Details</p>
+                            </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-header">SUPER ADMIN SYSTEM</li>
+                    <li class="nav-item {{ ('superadmin/profile' == request()->path() || 'superadmin/changePassword' == request()->path()) ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-cog"></i>
+                            <p>
+                                Super Admin Settings
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url('superadmin/profile')}}" class="nav-link {{ 'superadmin/profile' == request()->path() ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>User Profile</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('superadmin/changePassword')}}" class="nav-link {{ 'superadmin/changePassword' == request()->path() ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Change Password</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                        Dashboard
-                        <i class="right fas fa-angle-left"></i>
+                            Logout
                         </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                        <a href="{{ url('superadmin/dashboard') }}" class="nav-link {{ 'superadmin/dashboard' == request()->path() ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>User Details</p>
                         </a>
-                        </li>
-                        {{-- <li class="nav-item">
-                        <a href="{{ url('admin/hi') }}" class="nav-link {{ 'admin/hi' == request()->path() ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>डेशबोर्ड <span class="right badge badge-success">Hindi</span></p>
-                        </a>
-                        </li> --}}
-                    </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </li>
                 </ul>
             </nav>

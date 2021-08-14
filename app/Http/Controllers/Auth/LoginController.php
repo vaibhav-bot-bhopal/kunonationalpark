@@ -30,18 +30,35 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
 
+    public function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $email = $request->email;
+        $password = $request->password;
+
+        if ($request->remember === null) {
+            setcookie('email', $email, 100);
+            setcookie('password', $password, 100);
+        } else {
+            setcookie('email', $email, time() + 60 * 60 * 24 * 100);
+            setcookie('password', $password, time() + 60 * 60 * 24 * 100);
+        }
+    }
+
     public function redirectTo()
     {
         //SuperAdmin Login
-        if(Auth::user()->role_as == 'superadmin')
-        {
+        if (Auth::user()->role_as == 'superadmin') {
             return 'superadmin/dashboard';
         }
 
         //Admin Login
-        if(Auth::user()->role_as == 'admin')
-        {
-            return 'admin/en';
+        if (Auth::user()->role_as == 'admin') {
+            return 'admin/dashboard';
         }
     }
 
@@ -55,9 +72,9 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::logout();
         return redirect('/login');
     }
-
 }

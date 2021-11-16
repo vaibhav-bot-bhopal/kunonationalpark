@@ -54,11 +54,11 @@
                 @if (Session::has('locale'))
                     @if(session('locale') == 'hi')
                         <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="flag-icon flag-icon-in" style="margin-right: 8px!important"></i>{{ 'Language/भाषा :- हिंदी' }}
+                            <i class="flag-icon flag-icon-in" style="margin-right: 8px!important"></i>{{ 'भाषा :- हिंदी' }}
                         </a>
                     @else
                         <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="flag-icon flag-icon-us" style="margin-right: 8px!important"></i>{{ 'Language/भाषा : English' }}
+                            <i class="flag-icon flag-icon-us" style="margin-right: 8px!important"></i>{{ 'Language : English' }}
                         </a>
                     @endif
                 @else

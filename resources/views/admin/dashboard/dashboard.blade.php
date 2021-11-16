@@ -29,7 +29,7 @@
                     <div class="col-md-12">
                         <div class="card card-dark">
                             <div class="card-header">
-                                <h5 class="card-title">News Information</h5>
+                                <h5 class="card-title">Overview and Informations</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -51,7 +51,7 @@
                                             <div class="icon">
                                             <i class="ion ion-stats-bars"></i>
                                             </div>
-                                            <a href="{{ route('knp.newsshow') }}" class="small-box-footer">View Total News <i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="{{ route('knp.newsshow') }}" class="small-box-footer">View News <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                     <!-- ./col -->
@@ -95,7 +95,7 @@
                     <div class="col-md-12">
                         <div class="card card-dark">
                             <div class="card-header">
-                                <h5 class="card-title">समाचार की जानकारी</h5>
+                                <h5 class="card-title">अवलोकन और जानकारी</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -117,7 +117,7 @@
                                             <div class="icon">
                                             <i class="ion ion-stats-bars"></i>
                                             </div>
-                                            <a href="{{ route('knp.newsshow') }}" class="small-box-footer">व्यू कुल समाचार <i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="{{ route('knp.newsshow') }}" class="small-box-footer">समाचार देखें <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                     <!-- ./col -->

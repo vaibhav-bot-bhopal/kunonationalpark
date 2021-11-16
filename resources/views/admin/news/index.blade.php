@@ -31,7 +31,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="n_title">News Title</label>
-                                <input type="text" class="form-control @error('n_title') is-invalid @enderror" id="n_title" name="n_title" value="{{old('n_title')}}" >
+                                <input type="text" class="form-control @error('n_title') is-invalid @enderror" id="n_title" name="n_title" value="{{old('n_title')}}" placeholder="Enter News Title">
                                 @error('n_title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -183,7 +183,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="n_title">समाचार शीर्षक</label>
-                                <input type="text" class="form-control @error('n_title') is-invalid @enderror" id="n_title" name="n_title" value="{{old('n_title')}}" >
+                                <input type="text" class="form-control @error('n_title') is-invalid @enderror" id="n_title" name="n_title" value="{{old('n_title')}}" placeholder="समाचार शीर्षक दर्ज करें">
                                 @error('n_title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

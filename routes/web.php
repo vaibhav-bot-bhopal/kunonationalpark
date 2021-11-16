@@ -23,6 +23,8 @@ Route::get('language/{lang}', function ($lang) {
     return redirect()->back();
 })->middleware('language');
 
+Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::get('/', 'WelcomeController@index')->middleware('language');
 Route::get('/news', 'NewscornerController@index')->middleware('language');
 Route::get('/news-details/{slug}', 'NewscornerController@news_details')->name('news-details')->middleware('language');
@@ -34,16 +36,16 @@ Route::get('/contact', 'ContactusController@index')->middleware('language');
 Route::group(['prefix' => 'superadmin', 'middleware' => ['auth', 'isSuperadmin', 'prevent-back-history']], function () {
     // Account Settings
     Route::get('profile', 'SettingsController@index')->name('suadmin.profile');
-    Route::put('profile-update', 'SettingsController@updateProfile')->name('suadmin.profile.update');
+    Route::match(['get', 'put'], 'profile-update', 'SettingsController@updateProfile')->name('suadmin.profile.update');
     Route::get('changePassword', 'SettingsController@changePassword')->name('suadmin.changePassword');
-    Route::put('updatePassword', 'SettingsController@updatePassword')->name('suadmin.updatePassword');
+    Route::match(['get', 'put'], 'updatePassword', 'SettingsController@updatePassword')->name('suadmin.updatePassword');
     Route::get('adminChangePassword/{id}', 'SettingsController@adminChangePassword')->name('suadmin.changeadminpassword');
-    Route::put('adminUpdatePassword/{id}', 'SettingsController@adminUpdatePassword')->name('suadmin.updateadminpassword');
+    Route::match(['get', 'put'], 'adminUpdatePassword/{id}', 'SettingsController@adminUpdatePassword')->name('suadmin.updateadminpassword');
 
     // For Super Admin Dashboard
     Route::get('/dashboard', 'SuperAdminController@index')->name('superadmin.dashboard');
     Route::get('/role-edit/{id}', 'SuperAdminController@editUserRole')->name('editUserRole');
-    Route::put('/role-update/{id}', 'SuperAdminController@updateUserRole')->name('updateUserRole');
+    Route::match(['get', 'put'], '/role-update/{id}', 'SuperAdminController@updateUserRole')->name('updateUserRole');
     Route::delete('/role-delete/{id}', 'SuperAdminController@deleteUserRole')->name('deleteUserRole');
     Route::get('/changeuserstatus', 'SuperAdminController@changeUserStatus')->name('changeUserStatus');
 });
@@ -52,16 +54,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'prevent-
     // For Dashboard
     Route::get('/dashboard', 'DashboardController@index')->name('knp.dashboard')->middleware('language');
     Route::get('/newsShow', 'HomeController@newsShow')->name('knp.newsshow')->middleware('language');
-    Route::post('/newsAdd', 'HomeController@newsAdd')->name('knp.newsadd')->middleware('language');
+    Route::match(['get', 'post'], '/newsAdd', 'HomeController@newsAdd')->name('knp.newsadd')->middleware('language');
     Route::get('/newsEdit/{id}', 'HomeController@newsEdit')->name('knp.newsedit')->middleware('language');
-    Route::post('/newsUpdate/{id}', 'HomeController@newsUpdate')->name('knp.newsupdate')->middleware('language');
+    Route::match(['get', 'post'], '/newsUpdate/{id}', 'HomeController@newsUpdate')->name('knp.newsupdate')->middleware('language');
     Route::delete('/newsDelete/{id}', 'HomeController@newsDelete')->name('knp.newsdelete')->middleware('language');
 
     // Account Settings
     Route::get('profile', 'SettingsController@index')->name('knp.admin.profile')->middleware('language');
-    Route::put('profile-update', 'SettingsController@updateProfile')->name('knp.admin.profile.update')->middleware('language');
+    Route::match(['get', 'put'], 'profile-update', 'SettingsController@updateProfile')->name('knp.admin.profile.update')->middleware('language');
     Route::get('changePassword', 'SettingsController@changePassword')->name('knp.admin.changePassword')->middleware('language');
-    Route::put('updatePassword', 'SettingsController@updatePassword')->name('knp.admin.updatePassword')->middleware('language');
+    Route::match(['get', 'put'], 'updatePassword', 'SettingsController@updatePassword')->name('knp.admin.updatePassword')->middleware('language');
 });
 
 Route::prefix('about')->group(function () {
